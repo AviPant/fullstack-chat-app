@@ -5,7 +5,6 @@ console.log("DEBUG ENV:", {
   CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
 });
-dotenv.config();
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -15,16 +14,11 @@ import { connectDB } from "./lib/db.js";
 
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
-import { server } from "./lib/socket.js";
-const app = express(); // define it here
-
+import { app, server } from "./lib/socket.js";
 
 dotenv.config();
 
 const PORT = process.env.PORT;
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
-
 const __dirname = path.resolve();
 
 app.use(express.json());

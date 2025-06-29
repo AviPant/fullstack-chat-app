@@ -5,7 +5,7 @@ export const generateToken = (userId, res) => {
         expiresIn: '7d'
     });
 
-    res.cookie("token", token, {
+    res.cookie("jwt", token, {
         httpOnly: true,
         secure: false, // set to true only in HTTPS production
         sameSite: "strict",

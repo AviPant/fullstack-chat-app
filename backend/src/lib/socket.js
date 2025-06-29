@@ -24,8 +24,8 @@ export function getReceiverSocketId(userId) {
 io.on("connection", (socket) => {
   console.log("✅ A user connected:", socket.id);
 
-  const userId = socket.handshake.query.userId
-  if(userId) userSocketMap[userId] = socket.id
+  // Removed extraction of userId from handshake.query as it's undefined in recent socket.io versions
+  // User will be added via the "addUser" event below
 
   socket.on("addUser", (userId) => {
     // ✅ Store mapping
@@ -52,4 +52,4 @@ io.on("connection", (socket) => {
   });
 });
 
-export { io,server };
+export { io, server, app };
